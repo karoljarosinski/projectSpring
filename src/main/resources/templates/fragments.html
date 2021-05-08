@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <style>-->
+<!--        body{-->
+<!--            margin: 0;-->
+<!--        }-->
+<!--        .top{-->
+<!--        background-color: lightgray;-->
+<!--        height: 50px;-->
+<!--        display: flex;-->
+<!--        }-->
+<!--        img {-->
+<!--            height: 50px;-->
+<!--        }-->
+<!--        .links {-->
+<!--            margin-top: 15px;-->
+<!--            margin-left: 30px;-->
+<!--            width: 110px;-->
+<!--        }-->
+<!--        .footer{-->
+<!--        width 100%;-->
+<!--          background-color: lightgray;-->
+<!--          height: 50px;-->
+<!--          display: flex;-->
+<!--          position: fixed;-->
+<!--          bottom: 0;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+
+<div th:fragment="header" class="top">
+    <a href="/">
+        <img src="https://www.eventim.pl/obj/media/PL-eventim/galery/222x222/as/plusliga.jpg" alt="">
+    </a>
+    <div>
+        <div class="links">
+            <a href="/table">Tabela</a>
+        </div>
+    </div>
+    <div>
+        <div class="links">
+            <a href="/teams">Drużyny</a>
+        </div>
+    </div>
+    <div>
+        <div class="links">
+            <a href="/players">Zawodnicy</a>
+        </div>
+    </div>
+    <div>
+        <div class="links">
+            <a href="/addTeam">Dodaj drużyne</a>
+        </div>
+    </div>
+    <div>
+        <div class="links">
+            <a href="/addPlayer">Dodaj zawodnika</a>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="footer" class="footer">
+    <a href="/">
+        <img src="https://www.eventim.pl/obj/media/PL-eventim/galery/222x222/as/plusliga.jpg" alt="">
+    </a>
+    <div>
+        <div class="links">
+            <a href="/table">Tabela</a>
+        </div>
+    </div>
+    <div>
+        <div class="links">
+            <a href="/teams">Drużyny</a>
+        </div>
+    </div>
+    <div>
+        <div class="links">
+            <a href="/players">Zawodnicy</a>
+        </div>
+    </div>
+    <div>
+        <div class="links">
+            <a href="/addTeam">Dodaj drużyne</a>
+        </div>
+    </div>
+    <div>
+        <div class="links">
+            <a href="/addPlayer">Dodaj zawodnika</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

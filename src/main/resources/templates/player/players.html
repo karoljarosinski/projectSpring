@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Wszyscy zawodnicy</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        h1, tr {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1>Lista wszystkich zawodników</h1>
+    <table style="width:100%">
+        <tr>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Zespół</th>
+            <th>Edytuj</th>
+        </tr>
+        <tr th:each="player: ${players}">
+            <td>
+                <p th:text="${player.firstName}"></p>
+            </td>
+            <td>
+                <p th:text="${player.lastName}"></p>
+            </td>
+            <td>
+<!--                <p th:text = "${player.team.teamName}"></p>-->
+                <a th:href="|/team/${player.team.teamName}|" th:text = "${player.team.teamName}"></a>
+            </td>
+            <td>
+                <form th:action="|/players/${player.id}|" method="get">
+                    <button type="submit">Edytuj</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</section>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1 th:text = "|Zawodnicy klubu ${team.teamName}|"></h1>
+    <ul>
+        <li th:each ="player: ${players}">
+            <p th:text = "|${player.firstName} ${player.lastName}|"></p>
+        </li>
+    </ul>
+</section>
+</body>
+</html>
