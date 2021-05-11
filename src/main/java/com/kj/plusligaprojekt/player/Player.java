@@ -10,9 +10,7 @@ public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "Imie")
     private String firstName;
-    @Column(name = "Nazwisko")
     private String lastName;
 
     @ManyToOne

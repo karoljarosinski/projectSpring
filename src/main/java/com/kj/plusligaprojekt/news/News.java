@@ -3,7 +3,6 @@ package com.kj.plusligaprojekt.news;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "news")
 public class News {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

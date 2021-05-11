@@ -27,6 +27,7 @@
             <th>Nazwisko</th>
             <th>Zespół</th>
             <th>Edytuj</th>
+            <th>Usuń</th>
         </tr>
         <tr th:each="player: ${players}">
             <td>
@@ -42,6 +43,11 @@
             <td>
                 <form th:action="|/players/${player.id}|" method="get">
                     <button type="submit">Edytuj</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="|/players/remove/${player.id}|" method="get">
+                    <button type="submit">Usuń</button>
                 </form>
             </td>
         </tr>

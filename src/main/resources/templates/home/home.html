@@ -19,7 +19,7 @@
     <h1>Aktualności</h1>
     <ul>
         <li th:each ="article: ${news}">
-            <a th:href="|/${article.id}|" th:text="${article.title}"></a>
+            <a th:href="|/article/${article.id}|" th:text="${article.title}"></a>
         </li>
     </ul>
 </section>

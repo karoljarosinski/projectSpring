@@ -26,6 +26,7 @@
             <th>Miasto</th>
             <th>Pokaz wszystkich zawodników</th>
             <th>Edytuj</th>
+            <th>Usuń</th>
         </tr>
         <tr th:each="team: ${teams}">
             <td>
@@ -42,6 +43,11 @@
             <td>
                 <form th:action="|/teams/${team.id}|" method="get">
                     <button type="submit">Edytuj</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="|/teams/remove/${team.id}|" method="get">
+                    <button type="submit">Usuń</button>
                 </form>
             </td>
         </tr>

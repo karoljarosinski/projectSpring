@@ -6,10 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/players")
 public class PlayerController {
 
     private PlayerRepository playerRepository;
@@ -20,20 +22,21 @@ public class PlayerController {
         this.teamRepository = teamRepository;
     }
 
-    @GetMapping("/players/{id}")
+    @GetMapping("/{id}")
     public String editPlayer(@PathVariable Long id, Model model) {
         Player player = playerRepository.findById(id).get();
         model.addAttribute("playerToEdit", player);
+        model.addAttribute("teams", teamRepository.findAll());
         return "player/editPlayer";
     }
 
-    @PostMapping("/players/{id}")
+    @PostMapping("/{id}")
     public String editPlayer(@PathVariable Long id, Player player) {
         playerRepository.save(player);
         return "redirect:/players";
     }
 
-    @GetMapping("/players")
+    @GetMapping
     public String players(Model model) {
         List<Player> players = playerRepository.findAll();
         model.addAttribute("players", players);
@@ -51,5 +54,11 @@ public class PlayerController {
     public String addPlayer(Player player) {
         playerRepository.save(player);
         return "redirect:/";
+    }
+
+    @GetMapping("/remove/{id}")
+    public String removePlayer(@PathVariable Long id) {
+        playerRepository.deleteById(id);
+        return "redirect:/players";
     }
 }

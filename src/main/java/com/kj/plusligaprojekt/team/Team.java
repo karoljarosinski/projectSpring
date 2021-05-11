@@ -1,6 +1,7 @@
 package com.kj.plusligaprojekt.team;
 
 import com.kj.plusligaprojekt.player.Player;
+import com.kj.plusligaprojekt.table.Stats;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,14 +12,30 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "Nazwa")
     private String teamName;
-    @Column(name = "Miasto")
     private String city;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", cascade = CascadeType.REMOVE)
     private List<Player> players;
 
+    @ManyToOne
+    private Stats stats;
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    public Stats getStats() {
+        return stats;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
 
     public Long getId() {
         return id;

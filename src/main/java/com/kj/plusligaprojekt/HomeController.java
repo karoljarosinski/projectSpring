@@ -2,7 +2,6 @@ package com.kj.plusligaprojekt;
 
 import com.kj.plusligaprojekt.news.News;
 import com.kj.plusligaprojekt.news.NewsRepository;
-import com.kj.plusligaprojekt.team.Team;
 import com.kj.plusligaprojekt.team.TeamRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +29,7 @@ public class HomeController {
         return "home/home";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/article/{id}")
     public String home(@PathVariable Long id, Model model) {
         Optional<News> articles = newsRepository.findById(id);
         if (articles.isPresent()) {
@@ -42,11 +41,5 @@ public class HomeController {
         return "home/article";
     }
 
-    @GetMapping("/table")
-    public String table(Model model) {
-        List<Team> teams = teamRepository.findAll();
-        model.addAttribute("teams", teams);
-        return "table/table";
-    }
 
 }

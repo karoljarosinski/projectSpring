@@ -1,6 +1,8 @@
 package com.kj.plusligaprojekt.team;
 
 import com.kj.plusligaprojekt.player.PlayerRepository;
+import com.kj.plusligaprojekt.table.Stats;
+import com.kj.plusligaprojekt.table.StatsRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +16,12 @@ public class TeamController {
 
     private TeamRepository teamRepository;
     private PlayerRepository playerRepository;
+    private StatsRepository statsRepository;
 
-
-    public TeamController(TeamRepository teamRepository, PlayerRepository playerRepository) {
+    public TeamController(TeamRepository teamRepository, PlayerRepository playerRepository, StatsRepository statsRepository) {
         this.teamRepository = teamRepository;
         this.playerRepository = playerRepository;
+        this.statsRepository = statsRepository;
     }
 
     @GetMapping("/teams")
@@ -58,8 +61,16 @@ public class TeamController {
 
     @PostMapping("/addTeam")
     public String addTeam(Team team) {
+        statsRepository.save(new Stats());
         teamRepository.save(team);
+        teamRepository.assignStatsId(team.getId());
         return "redirect:/";
+    }
+
+    @GetMapping("/teams/remove/{id}")
+    public String removePlayer(@PathVariable Long id) {
+        teamRepository.deleteById(id);
+        return "redirect:/teams";
     }
 
 }
