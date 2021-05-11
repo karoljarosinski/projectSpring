@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabela</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        h1, tr {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1>Tabela ligowa</h1>
+    <table style="width:100%">
+        <tr>
+            <th>Nazwa</th>
+            <th>Liczba zdobytych punktów</th>
+            <th>Liczba straconych punktów</th>
+            <th>Liczba zdobytych setów</th>
+            <th>Liczba straconych setów</th>
+            <th>Liczba dużych punktów</th>
+        </tr>
+        <tr th:each="team: ${teams}">
+            <td>
+                <a th:href="|/team/${team.teamName}" th:text="${team.teamName}"></a>
+            </td>
+            <td>
+                <p th:text="${team.stats.gainedPoints}"></p>
+            </td>
+            <td>
+                <p th:text="${team.stats.lostPoints}"></p>
+            </td>
+            <td>
+                <p th:text="${team.stats.gainedSets}"></p>
+            </td>
+            <td>
+                <p th:text="${team.stats.lostSets}"></p>
+            </td>
+            <td>
+                <p th:text="${team.stats.totalPoints}"></p>
+            </td>
+        </tr>
+    </table>
+
+    <form action="/table" method="post">
+        <div style="display: flex">
+            <div class="col-md-4" style="margin-left: 200px">
+                <label for="selectHost" class="form-label">Gospodarz</label>
+                <select id="selectHost" class="form-select">
+                    <option th:each="team: ${teams}" th:text="${team.teamName}" th:value="${team.id}"></option>
+                </select>
+
+                <label for="Małe zdobyte1" class="form-label">Małe punkty zdobyte</label>
+                <input type="number" class="form-control" id="Małe zdobyte1">
+
+                <label for="Małe stracone1" class="form-label">Małe punkty stracone</label>
+                <input type="number" class="form-control" id="Małe stracone1">
+
+                <label for="Sety zdobyte1" class="form-label">Sety zdobyte</label>
+                <input type="number" class="form-control" id="Sety zdobyte1">
+
+                <label for="Sety stracone1" class="form-label">Sety stracone</label>
+                <input type="number" class="form-control" id="Sety stracone1">
+            </div>
+            <div class="col-md-4" style="margin-left: 50px">
+                <label for="selectAway" class="form-label">Gospodarz</label>
+                <select id="selectAway" class="form-select">
+                    <option th:each="team: ${teams}" th:text="${team.teamName}" th:value="${team.id}"></option>
+                </select>
+
+                <label for="Małe zdobyte2" class="form-label">Małe punkty zdobyte</label>
+                <input type="number" class="form-control" id="Małe zdobyte2">
+
+                <label for="Małe stracone2" class="form-label">Małe punkty stracone</label>
+                <input type="number" class="form-control" id="Małe stracone2">
+
+                <label for="Sety zdobyte2" class="form-label">Sety zdobyte</label>
+                <input type="number" class="form-control" id="Sety zdobyte2">
+
+                <label for="Sety stracone" class="form-label">Sety stracone</label>
+                <input type="number" class="form-control" id="Sety stracone">
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px">
+            <button type="submit" class="btn btn-primary" style="width: 200px">Dodaj</button>
+        </div>
+
+    </form>
+</section>
+</body>
+</html>

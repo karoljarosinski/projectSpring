@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj zawodnika</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1 style="text-align: center;">Edytuj zawodnika</h1>
+
+    <form th:action="|/players/${playerToEdit.id}|" method="post" th:object=${playerToEdit} class="row g-3"
+          style="margin-top: 15px; margin-left: 15px; margin-right: 15px;">
+        <div class="col-md-6">
+            <label for="firstName" class="form-label">Imię</label>
+            <input th:field="*{firstName}" type="text" class="form-control" id="firstName">
+        </div>
+        <div class="col-md-6">
+            <label for="lastName" class="form-label">Nazwisko</label>
+            <input th:field="*{lastName}" type="text" class="form-control" id="lastName">
+        </div>
+        <div class="col-md-4">
+            <label for="inputTeam" class="form-label">Drużyna</label>
+            <select id="inputTeam" class="form-select" th:field ="*{team}">
+                <option th:each="team: ${teams}" th:text = "${team.teamName}" th:value="${team.id}"></option>
+            </select>
+        </div>
+        <div class="col-12" style="text-align: center;">
+            <button type="submit" class="btn btn-primary">Edytuj</button>
+        </div>
+    </form>
+</section>
+</body>
+</html>

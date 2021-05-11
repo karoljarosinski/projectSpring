@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
+    <style>
+        section {
+            padding-top: 100px;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1>Aktualności</h1>
+    <ul>
+        <li th:each ="article: ${news}">
+            <a th:href="|/article/${article.id}|" th:text="${article.title}"></a>
+        </li>
+    </ul>
+</section>
+
+</body>
+</html>

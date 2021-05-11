@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj zespół</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1 style="text-align: center;">Edytuj zespół</h1>
+
+    <form th:action="|/teams/${teamToEdit.id}|" method="post" th:object=${teamToEdit} class="row g-3"
+          style="margin-top: 15px; margin-left: 15px; margin-right: 15px;">
+        <div class="col-md-6">
+            <label for="teamName" class="form-label">Nazwa drużyny</label>
+            <input th:field="*{teamName}" type="text" class="form-control" id="teamName">
+        </div>
+        <div class="col-md-6">
+            <label for="city" class="form-label">Miasto</label>
+            <input th:field="*{city}" type="text" class="form-control" id="city">
+        </div>
+        <div class="col-12" style="text-align: center;">
+            <button type="submit" class="btn btn-primary">Edytuj</button>
+        </div>
+    </form>
+</section>
+</body>
+</html>
